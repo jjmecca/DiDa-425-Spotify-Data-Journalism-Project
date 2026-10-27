@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="70" class="scrollspy" tabindex="0">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap -->
+    <link href="libs/bootstrap.min.css" rel="stylesheet">
+    <!-- p5js -->
+    <script src="./libs/p5.min.js"></script>
+    <script src="./libs/p5.sound.min.js"></script>
+    <!-- d3.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js" integrity="sha512-vc58qvvBdrDR4etbxMdlTt4GBQk1qjvyORR2nrsPsFPyrs+/u5c3+1Ct6upOgdZoIl7eq6k3a1UPDSNAQi/32A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- chart js library -->
+    <script src="libs/chart.umd.js"></script>
+    <!-- GSAP -->
+    <script src="libs/gsap.min.js"></script>
+    <script src="libs/ScrollTrigger.min.js"></script>
+    <!-- Textillate.js + JQuery -->
+    <script src="libs/jquery-3.7.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/textillate/0.4.0/jquery.textillate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lettering.js/0.6.1/jquery.lettering.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.compat.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Creepster&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Strait&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <title>NYPD Stop-and-Frisk Data Analysis</title>
+</head>
+<body>
+    <!-- BEGIN NAVBAR-->
+    <nav id="navbar" class="navbar navbar-expand-lg fixed-top bg-body-tertiary">
+        <div id="navigation" class="container-fluid">
+          <a class="navbar-brand" href="#" style="color:aliceblue">Spotify</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarScroll">
+            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
+              <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Sections
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  <li><a class="dropdown-item" href="#Section1">Section1</a></li>
+                  <li><a class="dropdown-item" href="#Section2">Section2</a></li>
+                  <li><a class="dropdown-item" href="#Section3">Section3</a></li>
+                  <li><a class="dropdown-item" href="#Section4">Section4</a></li>
+                  <li><a class="dropdown-item" href="#Section5">Section5</a></li>
+                </ul>
+              </li>
+              <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+              <li class="nav-item"><a class="nav-link active" href="#scrollspyHeading6">Contact Us</a></li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+    <!-- END NAVBAR-->
+
+    <!-- BEGIN MAIN CONTENT-->
+      <main id="title" class="container-fluid" style="margin-bottom: 0; padding-bottom: 0;  align-items: center;
+      justify-content: center;
+      height: 100vh;
+      padding: 20px;
+      line-height: 1.8;
+      margin: 0 auto;
+      text-align: center;">
+          <div class="row order-first justify-content-center text-center">
+            <h2 id='target' class="title" style="font-size: 80px; padding-top: 70px; padding-bottom: 0%;">Spotify Playlist</h2>
+            <h2 id='target2' class="title" style="font-size: 65px; padding-bottom: 0%;">Data Analysis</h2>
+          </div>
+          <div class="row justify-content-center text-center mx-auto">
+            <a href="#Section1">
+              <button id="data_button" type="button" class="btn btn-secondary btn-lg active" href="#Section1">View the Data</button>
+            </a>
+            <a href="about.html">
+              <button id="about_button" type="button" class="btn btn-secondary btn-lg active">About the Data</button>
+            </a>
+          </div>
+      </main>
+      <main class="container-fluid">
+        <div class="row order-first align-items-center text-center" style="padding-bottom: 40px; padding-top: 20px; padding-left: 100px; padding-right: 100px;">
+          <p style="font-size: 25px;">This site is an exploration of NYPD stop-and-frisk data (2023) with a focus on racial disparities. The majority of stops have targeted people of color, Black individuals in particular, raising serious concerns about bias, legality, and public safety. Through data visualizations, I highlight the patterns and impact of these practices.</p>
+        </div>
+      </main>
+      
+      <!-- Each part should be 1 viewport! -->
+      <main>
+        <div id="Section1" class="container-fluid">
+          <div class="row">
+            <div class="col-8" style="padding-top: 180px; min-height: 100vh;">
+              <div class="row order-first align-items-center text-center">
+                <h2>Number of Stops by Month</h2>
+              </div>
+              <div class="row align-items-center text-center">
+                <canvas id="linechart"></canvas>
+              </div>
+            </div>
+            <div class="col-4" style="padding-top: 130px; padding-left: 50px;">
+              <div id="info">
+                <div class="row order-first align-items-center justify-content-center">
+                  <h1><strong>Stops by Month</strong></h1>
+                    <p>This line chart displays the total number of stop-and-frisk incidents recorded each month of 2023. The data shows a gradual increase over time, culminating in a noticeable peak in October, which recorded the highest number of stops at 1,734. This spike highlights a significant surge in activity during that period.<br><br></p>
+                </div>
+              </div>
+            </div>
+          </div>      
+        </div>
+
+        <div id="Section2" class="container-fluid">
+          <div class="row">
+            <div class="col-8" style="padding-top: 120px; min-height: 100vh;">
+              <div class="row order-first align-items-center text-center">
+                <h2 id="barchart_title">Number of Stops by Race Description</h2>
+              </div>
+              <div class="row align-items-center text-center">
+                <canvas id="barchart"></canvas>
+              </div>
+            </div>
+            <div class="col-4" style="padding-top: 110px; padding-left: 50px;">
+              <div id="info">
+                <div class="row order-first align-items-center justify-content-center" id="info1">
+                  <h1><strong>Stops by Race</strong></h1>
+                    <p>This bar chart shows police stops by race, with People of Color (POC) highlighted in red. The data reveals a clear disparity—POC are stopped more often than white individuals, with Black individuals facing the highest stop rate by far.<br><br></p>
+                    <hr>
+                    <div class="legend">
+                      <br>
+                      <h3>Legend</h3>
+                      <ul>
+                        <li><strong>1</strong> - Black</li>
+                        <li><strong>2</strong> - White Hispanic</li>
+                        <li><strong>3</strong> - Black Hispanic</li>
+                        <li><strong>4</strong> - White</li>
+                        <li><strong>5</strong> - Asian / Pacific Islander</li>
+                        <li><strong>6</strong> - Middle Eastern/Southwest Asian</li>
+                        <li><strong>7</strong> - American Indian/Alaskan Native</li>
+                      </ul>
+                    </div>
+                    <button id="bar_button" type="button" class="btn btn-secondary btn-lg active" style="margin-top: 15%; background-color: var(--bg-elevated); border-color:var(--spotify-green); color: var(--spotify-green); width: 100%;" onclick="changeBar()">View by Sex</button>
+                </div>
+              </div>
+            </div>
+          </div>      
+      </div>
+
+      <div id="Section3" class="container-fluid">
+        <div class="row">
+          <div class="col-8" id="mapSlide" style="padding-top: 60px; min-height: 100vh;">
+            <div class="row order-first align-items-center text-center">
+              <h2 id="mapTitle" style="margin-bottom: 15px;">Stop Locations by Race Description</h2>
+            </div>
+            <div class="row justify-content-center align-items-center text-center" id="maps">
+                <img id="map1" src="img/racemap.png" class="img-fluid mx-2">
+            </div>
+          </div>
+          <div class="col-4" style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">
+            <div id="info">
+              <div id="mapDesc" class="row order-first align-items-center">
+                <h1><strong>NYC Stop Map<br>by Race</strong></h1>
+                <p>This map plots every recorded police stop across NYC, with each point color-coded by the race of the person stopped. Black individuals are overwhelmingly represented, making up the majority of stop locations throughout the city.</p>
+              </div>
+              <div id="mapButtonContainer">
+                <button id="map_button" type="button" class="btn btn-secondary btn-lg active" style="background-color: var(--bg-elevated); border-color:var(--spotify-green); color: var(--spotify-green);" onclick="replaceMap()">View by Sex</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="Section4" class="container-fluid">
+        <div class="row">
+          <div class="col-8" style="padding-top: 100px; min-height: 100vh;">
+            <div class="row order-first align-items-center text-center">
+              <h2 style="margin-bottom: 40px;">Racial Disparity in Police Stops by Borough</h2>
+            </div>
+            <div class="row align-items-center justify-content-center">
+              <table id="racism_ranked">
+                <tr>
+                    <th>Rank</th>
+                    <th>Borough</th>
+                    <th>Ratio</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Staten Island</td>
+                    <td>1.78</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Brooklyn</td>
+                    <td>1.48</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Manhattan</td>
+                    <td>1.36</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Queens</td>
+                    <td>1.20</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Bronx</td>
+                    <td>1.08</td>
+            
+                </tr>
+              </table>
+            </div>
+          </div>
+          <div class="col-4" style="padding-top: 90px; padding-left: 50px;">
+            <div class="row order-first align-items-center justify-content-center">
+              <div id="info">
+                <h1><strong>Stop vs Pop</strong></h1><!-- Disparity by Borough -->
+                <p>This table ranks the five NYC boroughs based on the ratio of POC stop percentage to POC population percentage. A higher ratio indicates greater disparity—where People of Color are stopped at rates far exceeding their representation. Staten Island ranks highest, with a ratio of 1.78, suggesting the most disproportionate policing.</p>
+                <hr>
+                <h4>Where does the data come from?</h4>
+                <p>Data is sourced from the U.S. Census and the NYC Stop-and-Frisk dataset. Ratios were calculated by dividing the percentage of stops involving POC by the POC population percentage in each borough.</p>
+                <p style="margin-top: 20%;">View the original data:</p>
+                <button id="table_button" type="button" class="btn btn-secondary btn-lg active" style="background-color: var(--bg-elevated); border-color:var(--spotify-green); color: var(--spotify-green); width: 100%;" onclick="replaceTable()">Switch Table</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="Section5" class="container-fluid">
+        <div class="row">
+          <div class="col-8" id="mapSlide" style="padding-top: 65px; min-height: 100vh;">
+            <div class="row order-first align-items-center justify-content-center text-center">
+              <h2 id="mapTitle" style="margin-bottom: 20px;">Stop Outcomes</h2>
+              <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                <label class="btn btn-outline-primary" for="btnradio1"onclick="frisked()"> Frisked</label>
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btnradio2"onclick="weapon()"> Weapon Found</label>
+                <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+                <label class="btn btn-outline-primary" for="btnradio3"onclick="arrested()"> Arrested</label>
+              </div>
+            </div>
+            <div class="row justify-content-center align-items-center text-center" id="maps">
+              <canvas id="pieChart" style="padding-top: 30px;"></canvas>
+            </div>
+          </div>
+          <div class="col-4" style="padding-top: 120px; padding-left: 50px;">
+            <div id="info">
+              <div id="mapDesc" class="row order-first align-items-center">
+                <h1><strong>Stop Outcomes</strong></h1>
+                <p>This section visualizes what happened after police stops — whether individuals were frisked, arrested, or if a weapon was found. Around 35% of stops led to frisks, but few uncovered weapons or resulted in arrests. <br><hr></p><p>Use the buttons to switch between outcomes.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="SectionEND" class="container-fluid">
+        <div class="row justify-content-center" >
+          <a href="#title" type="button" id="back_button" class="btn btn-secondary btn-lg active" style="position: absolute; background-color:  #141f2a; border-color:rgb(182, 194, 205); color: rgb(182, 194, 205); margin-bottom: 20px; margin-top: 110px; width: 100%;">Back to Top</a>
+          <div class="col-8 justify-content-center text-center align-items-center" style="padding-top: 170px; min-height: 1vh; border-bottom: 0px;"></div>
+          <div class="col-4" style="padding-top: 170px; padding-left: 50px;">
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- END MAIN CONTENT-->
+
+    <!-- BEGIN FOOTER -->
+    <footer class="text-center text-lg-start text-white" style="background-color: #121212">
+        <!-- Grid container -->
+        <div id="footer" class="container p-4 pb-0">
+          <!-- Section: Links -->
+          <section class="">
+            <!--Grid row-->
+            <div class="row">
+              <!-- Grid column -->
+              <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h6 class="text-uppercase mb-4 font-weight-bold">
+                  About Me
+                </h6>
+                <p>
+                  Hello! My name is Jake Mecca and I am from Long Island. I am a Mathematics and Digital & Data Studies student studying at Binghamton University!
+                </p>
+              </div>
+              <!-- Grid column -->
+
+              <hr class="w-100 clearfix d-md-none" />
+
+              <hr class="w-100 clearfix d-md-none" />
+
+              <!-- Grid column -->
+              <hr class="w-100 clearfix d-md-none" />
+
+              <!-- Grid column -->
+              <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                <h6 id='scrollspyHeading6' class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+                <p><i class="fas fa-home mr-3"></i> jaketmecca@gmail.com</p>
+                <p><i class="fas fa-envelope mr-3"></i> email2@gmail.com</p>
+                <p><i class="fas fa-phone mr-3"></i> email3@gmail.com</p>
+              </div>
+              <!-- Grid column -->
+
+              <!-- Grid column -->
+              <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                <h6 class="text-uppercase mb-4 font-weight-bold">Follow us!</h6>
+
+                <!-- Facebook -->
+                <a
+                  class="btn btn-primary btn-floating m-1"
+                  style="background-color: #1DB954"
+                  href="#!"
+                  role="button"
+                  ><i class="fab fa-facebook-f"></i
+                  ></a>
+
+                <!-- Twitter -->
+                <a
+                  class="btn btn-primary btn-floating m-1"
+                  style="background-color: #1DB954"
+                  href="#!"
+                  role="button"
+                  ><i class="fab fa-twitter"></i
+                  ></a>
+
+                <!-- Google -->
+                <a
+                  class="btn btn-primary btn-floating m-1"
+                  style="background-color: #1DB954"
+                  href="#!"
+                  role="button"
+                  ><i class="fab fa-google"></i
+                  ></a>
+
+                <!-- Instagram -->
+                <a
+                  class="btn btn-primary btn-floating m-1"
+                  style="background-color: #1DB954"
+                  href="#!"
+                  role="button"
+                  ><i class="fab fa-instagram"></i
+                  ></a>
+
+                <!-- Linkedin -->
+                <a
+                  class="btn btn-primary btn-floating m-1"
+                  style="background-color: #1DB954"
+                  href="#!"
+                  role="button"
+                  ><i class="fab fa-linkedin-in"></i
+                  ></a>
+                <!-- Github -->
+                <a
+                  class="btn btn-primary btn-floating m-1"
+                  style="background-color: #1DB954"
+                  href="#!"
+                  role="button"
+                  ><i class="fab fa-github"></i
+                  ></a>
+              </div>
+            </div>
+            <!--Grid row-->
+          </section>
+          <!-- Section: Links -->
+        </div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div
+            class="text-center p-3"
+            style="background-color: #181818"
+            >
+          © 2026 Copyright:
+          <a class="text-white" href="https://jakemecca.com/"
+            >jakemecca.com</a
+            >
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- END FOOTER -->
+    
+    <!-- Bootstrap -->
+    <script src="libs/bootstrap.bundle.min.js"></script>
+
+    <!-- Textillate -->
+    <script src="textillate.js"></script>
+
+    <!-- GSAP -->
+    <script src="gsap.js"></script>
+    <script src="barchart.js"></script>
+    <script src="piechart.js"></script>
+    <script src="linegraph.js"></script>
+
+    <script>//Get the button
+      let mybutton = document.getElementById("btn-back-to-top");
+      
+      // When the user scrolls down 20px from the top of the document, show the button
+      window.onscroll = function () {
+      scrollFunction();
+      };
+      
+      function scrollFunction() {
+      if (
+      document.body.scrollTop > 20 ||
+      document.documentElement.scrollTop > 20
+      ) {
+      mybutton.style.display = "block";
+      } else {
+      mybutton.style.display = "none";
+      }
+      }
+      // When the user clicks on the button, scroll to the top of the document
+      mybutton.addEventListener("click", backToTop);
+      
+      function backToTop() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+      }</script>
+  </body>
+</html>

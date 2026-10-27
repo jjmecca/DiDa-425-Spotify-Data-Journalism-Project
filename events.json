@@ -1,0 +1,44 @@
+[
+  {
+    "title": "Giuliani Intensifies Policy",
+    "date": "1999",
+    "description": "Stop-and-Frisk policy intensified under Mayor Giuliani.",
+    "image": "https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1500w,f_auto,q_auto:best/rockcms/2024-09/240926-rudy-giuliani-mn-0915-b91e60.jpg"
+  },
+  {
+    "title": "Bloomberg Expands Stop-and-Frisk",
+    "date": "2002",
+    "description": "Mayor Bloomberg expanded the Stop-and-Frisk program.",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Mayor_Michael_Bloomberg_%28cropped%29.jpg/250px-Mayor_Michael_Bloomberg_%28cropped%29.jpg"
+  },
+  {
+    "title": "Peak Year of Stops",
+    "date": "2011",
+    "description": "Stop-and-Frisk peaked with ~685,000 stops, 84% involving people of color.",
+    "image": "https://s3-prod.crainsnewyork.com/s3fs-public/POLITICS_140139992_AR_-1_0.jpg"
+  },
+  {
+    "title": "Federal Judge Ruling",
+    "date": "2013",
+    "description": "A federal judge ruled Stop-and-Frisk unconstitutional as practiced.",
+    "image": "https://www.advocate.com/media-library/court-judge-making-ruling-with-gavel.jpg?id=58009020&width=1245&height=700&coordinates=0%2C0%2C0%2C0"
+  },
+  {
+    "title": "Reforms Begin",
+    "date": "2014",
+    "description": "Mayor de Blasio begins reforms to the Stop-and-Frisk program.",
+    "image": "https://www.politico.com/dims4/default/286b315/2147483647/strip/true/crop/1160x773+0+0/resize/630x420!/quality/90/?url=https%3A%2F%2Fstatic.politico.com%2Fa5%2F70%2F3a526c5e45dea259f30a57258a55%2F210825-de-blasio-ap-773.jpg"
+  },
+  {
+    "title": "Dramatic Decline",
+    "date": "2019",
+    "description": "Stop-and-Frisk encounters drop to around 13,000.",
+    "image": "https://jonnaspilbor.com/wp-content/uploads/2024/12/Spilbor-5-Understanding-Your-Rights-During-a-Police-Stop-in-New-York_December-2024.jpg"
+  },
+  {
+    "title": "Ongoing Debate",
+    "date": "2020+",
+    "description": "BLM protests spark renewed debates over Stop-and-Frisk policies.",
+    "image": "https://news.uchicago.edu/sites/default/files/images/2020-06/BLM_1380_BigBrains.jpg"
+  }
+]
