@@ -1,22 +1,26 @@
 :root {
-    --spotify-green: #1DB954;
-    --spotify-green-hover: #1ED760;
-    --spotify-green-dark: #15803D;
+    --spotify-green: #1ED760;
+    --spotify-green-hover: #B6F36B;
+    --spotify-green-dark: #238D4C;
 
-    --bg-main: #121212;
-    --bg-secondary: #181818;
-    --bg-card: #242424;
-    --bg-elevated: #2A2A2A;
+    --bg-main: #0f130f;
+    --bg-secondary: #101410;
+    --bg-card: #080B09;
+    --bg-elevated: #223026;
 
-    --text-primary: #FFFFFF;
-    --text-secondary: #B3B3B3;
-    --text-muted: #727272;
+    --text-primary: #F5F7F5;
+    --text-secondary: #B6C3B8;
+    --text-muted: #A3AAA4;
 
-    --border-color: #333333;
+    --border-color: #1a251e;
+
+
+    --accent-lime: #B6F36B;
+    --accent-soft-green: #A0D5AC;
+    --chart-green: #238D4C;
 }
-
 #navigation {
-    background-color: var(--bg-main);
+    background-color: var(--bg-secondary);
     padding: 10px;
     height: 50px;
     position: fixed;
@@ -34,7 +38,7 @@
 }
 
 .dropdown-menu{
-    background-color: var(--bg-card);
+    background-color: var(--bg-navigation);
     outline-color: var(--border-color);
 }
 
@@ -93,10 +97,9 @@ canvas{
 }
 
 #title{
-    background-image: url("https://img.magnific.com/free-vector/wavy-style-background_23-2148492680.jpg?semt=ais_hybrid&w=740&q=80");
     background-size: 100vw 100vh;
     background-repeat: no-repeat;
-    color: var(--text-primary);
+    background-color: var(--bg-primary);
     position: relative;
 }
 
@@ -110,7 +113,7 @@ footer{
 }
 
 .col-8{
-    border-bottom: 5px dashed var(--border-color);
+    border-top: 5px dashed #17251B;
 }
 
 #barchart {
@@ -392,35 +395,12 @@ text-align: center;
     position: relative;
 }
 
-.title{
-    animation: color-change 10s infinite;
-    color: var(--spotify-green-dark);
-}
-
-@keyframes color-change {
-    0%   { color: var(--text-primary); }
-    50%  { color: var(--text-secondary); }
-    100% { color: var(--text-primary); }
-}
-
 .flashing{
     animation: flashing 1s infinite;
 }
 
-@keyframes flashing {
-    0%  { color: var(--spotify-green); }
-    50%  { color: var(--spotify-green-hover); }
-    100% { color: var(--spotify-green); }
-}
-
 .source-code-pro{
     animation: color-change2 10s infinite;
-}
-
-@keyframes color-change2 {
-    0%   { color: var(--spotify-green); }
-    50%  { color: var(--text-primary); }
-    100% { color: var(--spotify-green); }
 }
 
 #btn-back-to-top {
@@ -469,4 +449,25 @@ text-align: center;
   display: block;
   width: 100%;
   box-sizing: border-box;
+}
+
+#title .col-md-6 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    position: static;
+    margin-top: 10px;
+}
+
+#title{
+    margin-left: 30px;
+}
+
+
+#data_button {
+    position: static;
+    margin-top: 10px;
+    margin-left: -20px;
+    width: 100%;
 }
