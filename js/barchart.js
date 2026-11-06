@@ -44,11 +44,8 @@ let data = {
     datasets: [{
         label: 'Stop Counts by Race', 
         data: [8542, 3001, 1447, 854, 265, 130, 18],
-        backgroundColor: ['rgba(255, 99, 132, 0.2)',
-            'rgba(255, 99, 132, 0.2)','rgba(255, 99, 132, 0.2)',
-            'rgba(78, 78, 78, 0.2)','rgba(255, 99, 132, 0.2)', 
-            'rgba(255, 99, 132, 0.2)' , 'rgba(255, 99, 132, 0.2)'],
-        borderColor: ['rgb(255, 99, 132)','rgb(255, 99, 132)','rgb(255, 99, 132)','rgb(112, 94, 98)','rgb(255, 99, 132)','rgb(255, 99, 132)','rgb(255, 99, 132)'],
+        backgroundColor: ['rgba(35,141, 76, 0.2)'],
+        borderColor: ['#238D4C'],
         borderWidth: 1
     }]
 };
@@ -102,8 +99,8 @@ function changeBar(){
             datasets: [{
                 label: 'Stop Counts by Sex', 
                 data: [15669,1028],
-                backgroundColor: ['rgba(99, 128, 255, 0.2)', 'rgba(255, 99, 132, 0.2)'],
-                borderColor: ['rgb(99, 128, 255)','rgb(255, 99, 132)'],
+                backgroundColor: ['rgba(35,141, 76, 0.2)', 'rgba(182, 243, 107, 0.2)'],
+                borderColor: ['#238D4C','#B6F36B'],
                 borderWidth: 1
             }]
         };
@@ -127,7 +124,7 @@ function changeBar(){
                     'rgba(255, 99, 132, 0.2)','rgba(255, 99, 132, 0.2)',
                     'rgba(78, 78, 78, 0.2)','rgba(255, 99, 132, 0.2)', 
                     'rgba(255, 99, 132, 0.2)' , 'rgba(255, 99, 132, 0.2)'],
-                borderColor: ['rgb(255, 99, 132)','rgb(255, 99, 132)','rgb(255, 99, 132)','rgb(112, 94, 98)','rgb(255, 99, 132)','rgb(255, 99, 132)','rgb(255, 99, 132)'],
+                borderColor: ['#1ED760'],
                 borderWidth: 1
             }]
         };

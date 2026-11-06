@@ -6,7 +6,7 @@ let monthData = {
         label: 'Stop Counts by Month', 
         data: [1468, 1304, 1407, 1544, 1647, 1254, 1439, 1368,1170,1734,1283,1353],
         fill: false,
-        borderColor: ['rgb(255, 99, 132)'],
+        borderColor: ['#238D4C'],
         tension: 0.1,
     }]
 };
