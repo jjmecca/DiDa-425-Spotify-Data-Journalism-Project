@@ -18,7 +18,10 @@
     --accent-lime: #B6F36B;
     --accent-soft-green: #A0D5AC;
     --chart-green: #238D4C;
+
+    --dashed-line: #17251B;
 }
+
 #navigation {
     background-color: var(--bg-secondary);
     padding: 10px;
@@ -38,14 +41,14 @@
 }
 
 .dropdown-menu{
-    background-color: var(--bg-navigation);
+    background-color: var(--bg-secondary);
     outline-color: var(--border-color);
 }
 
 .dropdown-menu a{
     font-size: 18px;
     font-family: "Proxima Nova";
-    background-color: rgba(0, 0, 0, 0) !important;
+    background-color: var(--bg-secondary) !important;
 }
 
 .dropdown-menu a:hover{
@@ -68,7 +71,7 @@ a {
 html{
     margin: 0;
     padding: 0;
-    background-color: var(--bg-main);
+    background-color: var(--bg-secondary);
     color: var(--text-primary);
     justify-content: center;
     align-items: center;
@@ -113,7 +116,7 @@ footer{
 }
 
 .col-8{
-    border-top: 5px dashed #17251B;
+    border-top: 5px dashed var(--dashed-line);
 }
 
 #barchart {

@@ -25,7 +25,7 @@
     
     <link rel="stylesheet" type="text/css" href="style.css">
 
-    <title>NYPD Stop-and-Frisk Data Analysis</title>
+    <title>Spotify Playlist Data Analysis</title>
 </head>
 <body>
     <!-- BEGIN NAVBAR-->
@@ -43,11 +43,11 @@
                     Sections
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <li><a class="dropdown-item" href="#Section1">Section1</a></li>
-                  <li><a class="dropdown-item" href="#Section2">Section2</a></li>
-                  <li><a class="dropdown-item" href="#Section3">Section3</a></li>
-                  <li><a class="dropdown-item" href="#Section4">Section4</a></li>
-                  <li><a class="dropdown-item" href="#Section5">Section5</a></li>
+                  <li><a class="dropdown-item" href="#Section1">Distribution</a></li>
+                  <li><a class="dropdown-item" href="#Section2">Clustering</a></li>
+                  <li><a class="dropdown-item" href="#Section3">Popularity</a></li>
+                  <li><a class="dropdown-item" href="#Section4">Artist Trends</a></li>
+                  <li><a class="dropdown-item" href="#Section5">Top Artists</a></li>
                 </ul>
               </li>
               <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
@@ -87,7 +87,7 @@
               </div>
 
               <div class="col-md-6">
-                <img src="img/sample.png" class="img-fluid" style="width: 85%; height: auto; margin-top: 50px; margin-left: 50px; padding: 0;border-radius: 50px; background-color: #17251B;"></img>
+                <img src="img/sample.png" class="img-fluid" style="width: 65%; height: auto; margin-top: 50px; margin-left: 130px; padding: 50px; border-radius: 50px; background-color: #17251B;"></img>
               </div>
 
           </div>
@@ -98,7 +98,7 @@
           <div class="row">
             <div class="col-8" style="padding-top: 180px; min-height: 100vh;">
               <div class="row order-first align-items-center text-center">
-                <h2>Number of Stops by Month</h2>
+                <h2>Distribution of Playlist Characteristics by Keyword</h2>
               </div>
               <div class="row align-items-center text-center">
                 <canvas id="linechart"></canvas>
@@ -107,7 +107,7 @@
             <div class="col-4" style="padding-top: 130px; padding-left: 50px;">
               <div id="info">
                 <div class="row order-first align-items-center justify-content-center">
-                  <h1><strong>Stops by Month</strong></h1>
+                  <h1><strong>Distribution</strong></h1>
                     <p>This line chart displays the total number of stop-and-frisk incidents recorded each month of 2023. The data shows a gradual increase over time, culminating in a noticeable peak in October, which recorded the highest number of stops at 1,734. This spike highlights a significant surge in activity during that period.<br><br></p>
                 </div>
               </div>
@@ -119,7 +119,7 @@
           <div class="row">
             <div class="col-8" style="padding-top: 120px; min-height: 100vh;">
               <div class="row order-first align-items-center text-center">
-                <h2 id="barchart_title">Number of Stops by Race Description</h2>
+                <h2 id="barchart_title">Clustering</h2>
               </div>
               <div class="row align-items-center text-center">
                 <canvas id="barchart"></canvas>
@@ -128,7 +128,7 @@
             <div class="col-4" style="padding-top: 110px; padding-left: 50px;">
               <div id="info">
                 <div class="row order-first align-items-center justify-content-center" id="info1">
-                  <h1><strong>Stops by Race</strong></h1>
+                  <h1><strong>Clustering</strong></h1>
                     <p>This bar chart shows police stops by race, with People of Color (POC) highlighted in red. The data reveals a clear disparity—POC are stopped more often than white individuals, with Black individuals facing the highest stop rate by far.<br><br></p>
                     <hr>
                     <div class="legend">
@@ -155,7 +155,7 @@
         <div class="row">
           <div class="col-8" id="mapSlide" style="padding-top: 60px; min-height: 100vh;">
             <div class="row order-first align-items-center text-center">
-              <h2 id="mapTitle" style="margin-bottom: 15px;">Stop Locations by Race Description</h2>
+              <h2 id="mapTitle" style="margin-bottom: 15px;">Popularity</h2>
             </div>
             <div class="row justify-content-center align-items-center text-center" id="maps">
                 <img id="map1" src="img/racemap.png" class="img-fluid mx-2">
@@ -164,7 +164,7 @@
           <div class="col-4" style="padding-top: 100px; padding-left: 50px; padding-right: 50px;">
             <div id="info">
               <div id="mapDesc" class="row order-first align-items-center">
-                <h1><strong>NYC Stop Map<br>by Race</strong></h1>
+                <h1><strong>Popularity</strong></h1>
                 <p>This map plots every recorded police stop across NYC, with each point color-coded by the race of the person stopped. Black individuals are overwhelmingly represented, making up the majority of stop locations throughout the city.</p>
               </div>
               <div id="mapButtonContainer">
@@ -179,7 +179,7 @@
         <div class="row">
           <div class="col-8" style="padding-top: 100px; min-height: 100vh;">
             <div class="row order-first align-items-center text-center">
-              <h2 style="margin-bottom: 40px;">Racial Disparity in Police Stops by Borough</h2>
+              <h2 style="margin-bottom: 40px;">Total vs. Unique tracks per Artist</h2>
             </div>
             <div class="row align-items-center justify-content-center">
               <table id="racism_ranked">
@@ -220,7 +220,7 @@
           <div class="col-4" style="padding-top: 90px; padding-left: 50px;">
             <div class="row order-first align-items-center justify-content-center">
               <div id="info">
-                <h1><strong>Stop vs Pop</strong></h1><!-- Disparity by Borough -->
+                <h1><strong>total vs unique</strong></h1><!-- Disparity by Borough -->
                 <p>This table ranks the five NYC boroughs based on the ratio of POC stop percentage to POC population percentage. A higher ratio indicates greater disparity—where People of Color are stopped at rates far exceeding their representation. Staten Island ranks highest, with a ratio of 1.78, suggesting the most disproportionate policing.</p>
                 <hr>
                 <h4>Where does the data come from?</h4>
@@ -237,7 +237,7 @@
         <div class="row">
           <div class="col-8" id="mapSlide" style="padding-top: 65px; min-height: 100vh;">
             <div class="row order-first align-items-center justify-content-center text-center">
-              <h2 id="mapTitle" style="margin-bottom: 20px;">Stop Outcomes</h2>
+              <h2 id="mapTitle" style="margin-bottom: 20px;">Top Total & Unique Tracks</h2>
               <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                 <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
                 <label class="btn btn-outline-primary" for="btnradio1"onclick="frisked()"> Frisked</label>
@@ -254,7 +254,7 @@
           <div class="col-4" style="padding-top: 120px; padding-left: 50px;">
             <div id="info">
               <div id="mapDesc" class="row order-first align-items-center">
-                <h1><strong>Stop Outcomes</strong></h1>
+                <h1><strong>Top Tracks</strong></h1>
                 <p>This section visualizes what happened after police stops — whether individuals were frisked, arrested, or if a weapon was found. Around 35% of stops led to frisks, but few uncovered weapons or resulted in arrests. <br><hr></p><p>Use the buttons to switch between outcomes.</p>
               </div>
             </div>
