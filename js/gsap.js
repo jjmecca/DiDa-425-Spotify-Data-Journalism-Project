@@ -126,8 +126,8 @@ gsap.to([imgElement,container], {
     onComplete: () => {
     const newTableHTML1 = `Stop Locations by Sex`;
     const newTableHTML2 = `Stop Locations by Race Description`;
-    const sex_src = 'img/sexmap.png';
-    const race_src = 'img/racemap.png';
+    const sex_src = 'img/popularity2.png';
+    const race_src = 'img/popularity1.png';
 
     container.innerHTML = sexMap ? newTableHTML2 : newTableHTML1;
     imgElement.src = sexMap ? race_src : sex_src;
