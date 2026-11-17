@@ -335,13 +335,13 @@ text-align: center;
     border: 0px !important;
 }
 
-#map_button,#bar_button,#reload_button{
+#switchPop,#bar_button,#reload_button{
     background-color: var(--spotify-green);
     border-color: var(--spotify-green);
     color: var(--bg-main);
 }
 
-#map_button{
+#switchPop{
     width: 55%;
     top: 90%;
     position: absolute;
@@ -448,7 +448,7 @@ text-align: center;
   padding-bottom: 30px;
 }
 
-#map_button {
+#switchPop {
   display: block;
   width: 100%;
   box-sizing: border-box;

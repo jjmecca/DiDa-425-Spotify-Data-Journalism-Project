@@ -1,17 +1,3 @@
-
-const Mrows = document.querySelectorAll("#racism_ranked tr");
-gsap.from(Mrows, {
-    y: 100, // Fly in below
-    opacity: 0, 
-    duration: 1, 
-    stagger: 0.3,
-    scrollTrigger: {
-    trigger: "#racism_ranked", 
-    start: "top 80%", // Start
-    toggleActions: "restart none none none",
-    },
-});
-
 //initial
 gsap.set("#info", { opacity: 0, x: 20 });
 
@@ -47,50 +33,6 @@ onLeaveBack: batch => {
 }
 });
 
-let showingTable1 = false;
-
-function replaceTable() {
-const container = document.getElementById('racism_ranked');
-
-gsap.to(container, {
-    opacity: 0,
-    y: 100,
-    duration: 0.8,
-    overwrite: true,
-    onComplete: () => {
-    const newTableHTML1 = `
-        <table>
-        <tr><th>Borough</th><th>POC Population %</th><th>POC Stop %</th></tr>
-        <tr><td>Staten Island</td><td>44.6%</td><td>79.2%</td></tr>
-        <tr><td>Manhattan</td><td>68.7%</td><td>93.1%</td></tr>
-        <tr><td>Queens</td><td>76.0%</td><td>90.9%</td></tr>
-        <tr><td>Brooklyn</td><td>62.8%</td><td>92.7%</td></tr>
-        <tr><td>The Bronx</td><td>91.0%</td><td>98.5%</td></tr>
-        </table>
-    `;
-
-    const newTableHTML2 = `
-        <table>
-        <tr><th>Rank</th><th>Borough</th><th>Ratio</th></tr>
-        <tr><td>1</td><td>Staten Island</td><td>1.78</td></tr>
-        <tr><td>2</td><td>Brooklyn</td><td>1.48</td></tr>
-        <tr><td>3</td><td>Manhattan</td><td>1.36</td></tr>
-        <tr><td>4</td><td>Queens</td><td>1.20</td></tr>
-        <tr><td>5</td><td>Bronx</td><td>1.08</td></tr>
-        </table>
-    `;
-
-    container.innerHTML = showingTable1 ? newTableHTML2 : newTableHTML1;
-    showingTable1 = !showingTable1;
-
-    gsap.fromTo(container,
-        { opacity: 0, y: 100 },
-        { opacity: 1, y: 0, duration: 0.8, overwrite: true }
-    );
-    }
-});
-}
-
 var scrollSpy = new bootstrap.ScrollSpy(document.body, {
 target: '#navbar'
 });
@@ -110,62 +52,141 @@ gsap.from([imgElement,container], {
     toggleActions: "restart none none none",
     },
 });
-let sexMap = false;
+let pop = false;
 
+const popButton = document.getElementById('switchPop');
 
+function switchPop() {
 
-const mapButton = document.getElementById('map_button');
+    // img and left container animation
+    gsap.to([imgElement,container], {
+        opacity: 0,
+        duration: 0.8,
+        x: -40,
+        overwrite: true,
+        onComplete: () => {
+        const pop2 = 'img/popularity2.png';
+        const pop1 = 'img/popularity1.png';
 
-function replaceMap() {
+        container.innerHTML = pop ? 'Popularity' : 'Popularity';
+        imgElement.src = pop ? pop2 : pop1;
+        pop = !pop;
 
-gsap.to([imgElement,container], {
-    opacity: 0,
-    duration: 0.8,
-    x: -40,
-    overwrite: true,
-    onComplete: () => {
-    const newTableHTML1 = `Stop Locations by Sex`;
-    const newTableHTML2 = `Stop Locations by Race Description`;
-    const sex_src = 'img/popularity2.png';
-    const race_src = 'img/popularity1.png';
-
-    container.innerHTML = sexMap ? newTableHTML2 : newTableHTML1;
-    imgElement.src = sexMap ? race_src : sex_src;
-    sexMap = !sexMap;
-
-    gsap.fromTo([imgElement,container],
-        { opacity: 0, x: -60},
-        { opacity: 1, x: 0, duration: 1, overwrite: true }
-    );
-    }
-});
-
-
-newDescHTML1 = `
-        <h1><strong>NYC Stop Map<br>by Race</strong></h1>
-        <p>This map plots every recorded police stop across NYC, with each point color-coded by the race of the person stopped. Black individuals are overwhelmingly represented, making up the majority of stop locations throughout the city.</p>
-`;
-newDescHTML2 = `
-        <h1><strong>NYC Stop Map<br>by Sex</strong></h1>
-        <p>In this version of the map, the stops are color-coded by sex: blue for male and red for female. Blue clearly dominates the map, showing that the vast majority of police stops involve male individuals, with female stops barely visible in comparison.</p><br>
-`;
-const newDescHTML = sexMap ? newDescHTML1 : newDescHTML2;
-
-gsap.to([desc,mapButton], {
-    opacity: 0,
-    duration: 0.8,
-    x: 20,
-    onComplete: () => {
-        desc.innerHTML = newDescHTML;
-        
-        mapButton.textContent = sexMap ? 'View by Sex' : 'View by Race';
-
-        gsap.fromTo([desc,mapButton],
-            { opacity: 0, x: 20 },
-            { opacity: 1, x: 0, duration: 1 }
+        gsap.fromTo([imgElement,container],
+            { opacity: 0, x: -60},
+            { opacity: 1, x: 0, duration: 1, overwrite: true }
         );
-    }
+        }
+    });
+
+
+    // right column animation
+    newDescHTML1 = `
+            <h1><strong>By Keyword</strong></h1>
+            <p>This map plots every recorded police stop across NYC, with each point color-coded by the race of the person stopped. Black individuals are overwhelmingly represented, making up the majority of stop locations throughout the city.</p>
+    `;
+    newDescHTML2 = `
+            <h1><strong>By Attribute</strong></h1>
+            <p>In this version of the map, the stops are color-coded by attribute: blue for male and red for female. Blue clearly dominates the map, showing that the vast majority of police stops involve male individuals, with female stops barely visible in comparison.</p><br>
+    `;
+    const newDescHTML = pop ? newDescHTML1 : newDescHTML2;
+
+    gsap.to([desc,popButton], {
+        opacity: 0,
+        duration: 0.8,
+        x: 20,
+        onComplete: () => {
+            desc.innerHTML = newDescHTML;
+            
+            popButton.textContent = pop ? 'View by Keyword' : 'View by Attribute';
+
+            gsap.fromTo([desc,popButton],
+                { opacity: 0, x: 20 },
+                { opacity: 1, x: 0, duration: 1 }
+            );
+        }
+    });
+}
+
+
+gsap.from([document.getElementById('graph2')], {
+    x: -60,
+    opacity: 0, 
+    duration: 2, 
+    scrollTrigger: {
+    trigger: "#Section2", 
+    start: "top 80%", // Start
+    end: "bottom 50%",
+    toggleActions: "restart none none none",
+    },
 });
+
+let cluster = false;
+
+cluster1 = `<img src="img/cluster2.png" class="img-fluid mx-2">`
+cluster2 = `<div style="min-height:461px" id="datawrapper-vis-l3Zd4"><script type="text/javascript" defer src="https://datawrapper.dwcdn.net/l3Zd4/embed.js" charset="utf-8" data-target="#datawrapper-vis-l3Zd4"></script><noscript><img src="https://datawrapper.dwcdn.net/l3Zd4/full.png" alt="Scatter Plot" /></noscript></div>`
+
+function loadTableau() {
+    const div = document.getElementById('viz1794941300380');
+    if (!div) return;
+
+    const viz = div.querySelector('object');
+
+    viz.style.width = '100%';
+    viz.style.height = (div.offsetWidth * 0.75) + 'px';
+
+    const script = document.createElement('script');
+    script.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+    div.appendChild(script);
+}
+
+
+function switchCluster() {
+
+    // img and left container animation
+    gsap.to([document.getElementById('graph2')], {
+        opacity: 0,
+        duration: 0.8,
+        x: -40,
+        overwrite: true,
+        onComplete: () => {
+        document.getElementById('clusterVisual').innerHTML = cluster ? cluster2 : cluster1;
+        cluster = !cluster;
+
+        gsap.fromTo([document.getElementById('graph2')],
+            { opacity: 0, x: -60},
+            { opacity: 1, x: 0, duration: 1, overwrite: true }
+        );
+        }
+    });
+
+
+    // right column animation
+    newDescHTML1 = `
+            <h1><strong>By Keyword</strong></h1>
+            <p>This map plots every recorded police stop across NYC, with each point color-coded by the race of the person stopped. Black individuals are overwhelmingly represented, making up the majority of stop locations throughout the city.</p>
+    `;
+    newDescHTML2 = `
+            <h1><strong>By Attribute</strong></h1>
+            <p>In this version of the map, the stops are color-coded by attribute: blue for male and red for female. Blue clearly dominates the map, showing that the vast majority of police stops involve male individuals, with female stops barely visible in comparison.</p><br>
+    `;
+    const newDescHTML = cluster ? newDescHTML1 : newDescHTML2;
+
+    gsap.to([document.getElementById('info2')], {
+        opacity: 0,
+        duration: 0.8,
+        x: 20,
+        onComplete: () => {
+            desc.innerHTML = newDescHTML;
+            
+            document.getElementById('clusterButton').textContent = cluster ? 'View Scatterplot' : 'View Table';
+
+            gsap.fromTo([document.getElementById('info2')],
+                { opacity: 0, x: 20 },
+                { opacity: 1, x: 0, duration: 1 }
+            );
+        }
+    });
 }
 
 var scrollSpy = new bootstrap.ScrollSpy(document.body, {
