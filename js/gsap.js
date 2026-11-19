@@ -69,7 +69,7 @@ function switchPop() {
         const pop1 = 'img/popularity1.png';
 
         container.innerHTML = pop ? 'Popularity' : 'Popularity';
-        imgElement.src = pop ? pop2 : pop1;
+        imgElement.src = pop ? pop1 : pop2;
         pop = !pop;
 
         gsap.fromTo([imgElement,container],
@@ -126,21 +126,6 @@ let cluster = false;
 cluster1 = `<img src="img/cluster2.png" class="img-fluid mx-2">`
 cluster2 = `<div style="min-height:461px" id="datawrapper-vis-l3Zd4"><script type="text/javascript" defer src="https://datawrapper.dwcdn.net/l3Zd4/embed.js" charset="utf-8" data-target="#datawrapper-vis-l3Zd4"></script><noscript><img src="https://datawrapper.dwcdn.net/l3Zd4/full.png" alt="Scatter Plot" /></noscript></div>`
 
-function loadTableau() {
-    const div = document.getElementById('viz1794941300380');
-    if (!div) return;
-
-    const viz = div.querySelector('object');
-
-    viz.style.width = '100%';
-    viz.style.height = (div.offsetWidth * 0.75) + 'px';
-
-    const script = document.createElement('script');
-    script.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
-    div.appendChild(script);
-}
-
-
 function switchCluster() {
 
     // img and left container animation
@@ -188,6 +173,16 @@ function switchCluster() {
         }
     });
 }
+
+// attribute dropdown
+document.querySelectorAll("#attribute1 .dropdown-item").forEach(item => {
+  item.addEventListener("click", function(e) {
+    e.preventDefault();
+
+    document.getElementById("myImage").src = this.dataset.img;
+    document.querySelector("#attribute1").textContent = this.textContent;
+  });
+});
 
 var scrollSpy = new bootstrap.ScrollSpy(document.body, {
 target: '#navbar'

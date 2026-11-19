@@ -203,12 +203,11 @@ p{
 
 #maps img {
     position: relative;
-    top: 0;
+    top: 10px;
     left: 0;
-    width: 65%; 
+    right: 70px;
+    width: 90%; 
     height: auto; 
-    aspect-ratio: 1 / 1; 
-    border: 10px solid var(--bg-card); 
     padding: 0px;
 }
 
@@ -473,4 +472,12 @@ text-align: center;
     margin-top: 10px;
     margin-left: -20px;
     width: 100%;
+}
+
+#attribute,#attribute1{
+    margin-top: 15%; background-color: var(--bg-elevated); border-color:var(--spotify-green); color: var(--spotify-green);
+}
+
+#attribute1 .dropdown-item{
+    background-color: var(--spotify-green-hover); border-color:var(--spotify-green-hover); color: var(--spotify-green);
 }

@@ -87,7 +87,7 @@
               </div>
 
               <div class="col-md-6">
-                <img src="img/sample.png" class="img-fluid" style="width: 65%; height: auto; margin-top: 50px; margin-left: 130px; padding: 50px; border-radius: 50px; background-color: #17251B;"></img>
+                <img src="img/sample.png" class="img-fluid" style="width: 65%; height: auto; margin-top: 50px; margin-left: 130px; padding: 50px; border-radius: 50px; background-color: #17251B;">
               </div>
 
           </div>
@@ -101,7 +101,7 @@
                 <h2>Distribution of Playlist Characteristics by Keyword</h2>
               </div>
               <div class="row align-items-center text-center">
-                <canvas id="linegraph"></canvas>
+                <img id="myImage" src="img/distribution/acousticness.png" class="img-fluid mt-3">
               </div>
             </div>
             <div class="col-4" style="padding-top: 130px; padding-left: 50px;">
@@ -109,6 +109,21 @@
                 <div class="row order-first align-items-center justify-content-center">
                   <h1><strong>Distribution</strong></h1>
                     <p>This line chart displays the total number of stop-and-frisk incidents recorded each month of 2023. The data shows a gradual increase over time, culminating in a noticeable peak in October, which recorded the highest number of stops at 1,734. This spike highlights a significant surge in activity during that period.<br><br></p>
+                    <div class="dropdown">
+                      <button id="attribute" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Attribute
+                      </button>
+                      <ul id="attribute1" class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#" data-img="img/distribution/acousticness.png">Acousticness</a></li>
+                        <li><a class="dropdown-item" href="#" data-img="img/distribution/danceability.png">Danceability</a></li>
+                        <li><a class="dropdown-item" href="#" data-img="img/distribution/energy.png">Energy</a></li>
+                        <li><a class="dropdown-item" href="#" data-img="img/distribution/liveness.png">Liveness</a></li>
+                        <li><a class="dropdown-item" href="#" data-img="img/distribution/loudness.png">Loudness</a></li>
+                        <li><a class="dropdown-item" href="#" data-img="img/distribution/speechiness.png">Speechiness</a></li>
+                        <li><a class="dropdown-item" href="#" data-img="img/distribution/tempo.png">Tempo</a></li>
+                        <li><a class="dropdown-item" href="#" data-img="img/distribution/valence.png">Valence</a></li>
+                      </ul>
+                    </div>
                 </div>
               </div>
             </div>
@@ -121,10 +136,10 @@
               <div class="row order-first align-items-center text-center">
                 <h2 id="clustering_title">Clustering</h2>
               </div>
-              <div class="row align-items-center text-center" id="clusterVisual">
-                <div style="min-height:100%; min-width:100%;" id="datawrapper-vis-l3Zd4"><script type="text/javascript" defer src="https://datawrapper.dwcdn.net/l3Zd4/embed.js" charset="utf-8" data-target="#datawrapper-vis-l3Zd4"></script><noscript><img src="https://datawrapper.dwcdn.net/l3Zd4/full.png" alt="Scatter Plot" /></noscript></div>
+              <div id="clusterVisual">
+                <div style="min-height:100%; width:100%;" id="datawrapper-vis-l3Zd4"><script type="text/javascript" defer src="https://datawrapper.dwcdn.net/l3Zd4/embed.js" charset="utf-8" data-target="#datawrapper-vis-l3Zd4"></script><noscript><img src="https://datawrapper.dwcdn.net/l3Zd4/full.png" alt="Scatter Plot" /></noscript></div>
               </div>
-            </div>
+              </div>
             <div class="col-4" style="padding-top: 110px; padding-left: 50px;">
               <div id="info">
                 <div class="row order-first align-items-center justify-content-center" id="info2">
