@@ -481,3 +481,18 @@ text-align: center;
 #attribute1 .dropdown-item{
     background-color: var(--spotify-green-hover); border-color:var(--spotify-green-hover); color: var(--spotify-green);
 }
+
+#attribute {
+    font-size: 20px;
+    padding: 8px 25px;
+    min-width: 220px;
+}
+
+#attribute1 {
+    min-width: 220px;
+}
+
+#attribute1 .dropdown-item {
+    font-size: 20px;
+    padding: 8px 20px;
+}

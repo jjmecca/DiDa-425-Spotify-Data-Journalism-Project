@@ -96,13 +96,15 @@
       <main>
         <div id="Section1" class="container-fluid">
           <div class="row">
-            <div class="col-8" style="padding-top: 180px; min-height: 100vh;">
+            <div class="col-8" style="padding-top: 150px; min-height: 100vh;">
+              <div id="section1-content">
               <div class="row order-first align-items-center text-center">
                 <h2>Distribution of Playlist Characteristics by Keyword</h2>
               </div>
-              <div class="row align-items-center text-center">
-                <img id="myImage" src="img/distribution/acousticness.png" class="img-fluid mt-3">
+              <div class="row align-items-center text-center" style="align-items: center;">
+                <img style="width: 90%;" id="distribution_img" src="img/distribution/acousticness.png" class="img-fluid mt-3">
               </div>
+            </div>
             </div>
             <div class="col-4" style="padding-top: 130px; padding-left: 50px;">
               <div id="info">
@@ -132,7 +134,8 @@
 
         <div id="Section2" class="container-fluid">
           <div class="row">
-            <div class="col-8" style="padding-top: 120px; min-height: 100vh;" id="graph2">
+            <div class="col-8" style="padding-top: 120px; min-height: 100vh;">
+              <div id="section2-content">
               <div class="row order-first align-items-center text-center">
                 <h2 id="clustering_title">Clustering</h2>
               </div>
@@ -140,9 +143,11 @@
                 <div style="min-height:100%; width:100%;" id="datawrapper-vis-l3Zd4"><script type="text/javascript" defer src="https://datawrapper.dwcdn.net/l3Zd4/embed.js" charset="utf-8" data-target="#datawrapper-vis-l3Zd4"></script><noscript><img src="https://datawrapper.dwcdn.net/l3Zd4/full.png" alt="Scatter Plot" /></noscript></div>
               </div>
               </div>
+            </div>
             <div class="col-4" style="padding-top: 110px; padding-left: 50px;">
               <div id="info">
                 <div class="row order-first align-items-center justify-content-center" id="info2">
+                  <div id="desc2">
                   <h1><strong>Clustering</strong></h1>
                     <p>This bar chart shows police stops by race, with People of Color (POC) highlighted in red. The data reveals a clear disparity—POC are stopped more often than white individuals, with Black individuals facing the highest stop rate by far.<br><br></p>
                     <hr>
@@ -159,6 +164,7 @@
                         <li><strong>7</strong> - American Indian/Alaskan Native</li>
                       </ul>
                     </div>
+                  </div>
                     <button id="clusterButton" type="button" class="btn btn-secondary btn-lg active" style="margin-top: 15%; background-color: var(--bg-elevated); border-color:var(--spotify-green); color: var(--spotify-green); width: 100%;" onclick="switchCluster()">View Table</button>
                 </div>
               </div>
@@ -168,7 +174,7 @@
 
       <div id="Section3" class="container-fluid">
         <div class="row">
-          <div class="col-8" id="mapSlide" style="padding-top: 60px; min-height: 100vh;">
+          <div class="col-8" id="mapSlide" style="padding-top: 60px; min-height: 100vh; align-items: center;">
             <div class="row order-first align-items-center text-center">
               <h2 id="mapTitle" style="margin-bottom: 15px;">Popularity</h2>
             </div>
@@ -196,41 +202,7 @@
             <div class="row order-first align-items-center text-center">
               <h2 style="margin-bottom: 40px;">Total vs. Unique tracks per Artist</h2>
             </div>
-            <div class="row align-items-center justify-content-center">
-              <table id="racism_ranked">
-                <tr>
-                    <th>Rank</th>
-                    <th>Borough</th>
-                    <th>Ratio</th>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>Staten Island</td>
-                    <td>1.78</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Brooklyn</td>
-                    <td>1.48</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Manhattan</td>
-                    <td>1.36</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Queens</td>
-                    <td>1.20</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Bronx</td>
-                    <td>1.08</td>
-            
-                </tr>
-              </table>
-            </div>
+            <div style="min-height:361px" id="datawrapper-vis-XxNZf"><script type="text/javascript" defer src="https://datawrapper.dwcdn.net/XxNZf/embed.js" charset="utf-8" data-target="#datawrapper-vis-XxNZf"></script><noscript><img src="https://datawrapper.dwcdn.net/XxNZf/full.png" alt="Scatter Plot" /></noscript></div>
           </div>
           <div class="col-4" style="padding-top: 90px; padding-left: 50px;">
             <div class="row order-first align-items-center justify-content-center">
